@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sailor Supply Co. – All Sailing Products</title>
+<style>
+:root{--bg:#f4f9fc;--card:#fff;--ink:#0b2540;--mut:#51708a;--acc:#0a7ea4;--acc2:#ff6b3d;--line:#d6e4ee;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#07182a;--card:#0d2740;--ink:#e8f3fb;--mut:#8fb0c8;--acc:#3cc3ee;--acc2:#ff8a5c;--line:#1b3d5c}}
+:root[data-theme="dark"]{--bg:#07182a;--card:#0d2740;--ink:#e8f3fb;--mut:#8fb0c8;--acc:#3cc3ee;--acc2:#ff8a5c;--line:#1b3d5c}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;gap:14px;padding:12px 20px;background:var(--card);border-bottom:1px solid var(--line)}
+nav b{font-size:1.15rem;margin-right:auto}nav a{color:var(--ink);text-decoration:none;font-size:.92rem;opacity:.8}nav a:hover{color:var(--acc);opacity:1}
+button{font:inherit;cursor:pointer;border:0;border-radius:999px;padding:9px 18px;background:var(--acc);color:#fff;transition:transform .15s}
+button:hover{transform:translateY(-2px) scale(1.04)}button.alt{background:var(--acc2)}
+.hero{position:relative;overflow:hidden;text-align:center;padding:90px 20px 150px;background:linear-gradient(#0a4a73,#0a7ea4);color:#fff}
+.hero h1{font-size:clamp(2rem,6vw,3.8rem);margin:0 0 10px;animation:rise .8s both}.hero p{max-width:560px;margin:0 auto 24px;animation:rise .8s .15s both}
+.hero button{animation:rise .8s .3s both}
+.boat{position:absolute;bottom:62px;left:-120px;font-size:3.2rem;animation:sail 14s linear infinite}
+.wave{position:absolute;left:0;bottom:0;width:200%;height:90px;animation:wave 8s linear infinite}.wave.w2{opacity:.5;animation-duration:12s;bottom:8px;animation-direction:reverse}
+@keyframes wave{to{transform:translateX(-50%)}}@keyframes sail{to{left:105%}}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}}
+section{max-width:1100px;margin:auto;padding:60px 20px}h2{font-size:1.8rem;margin:0 0 6px}.sub{color:var(--mut);margin:0 0 26px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;position:relative;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-6px) rotate(-.6deg);box-shadow:0 12px 28px rgba(10,126,164,.25)}
+.card .ic{font-size:2.6rem;display:block;animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-6px)}}
+.card h3{margin:8px 0 2px;font-size:1.05rem}.card p{margin:0;color:var(--mut);font-size:.88rem}.price{color:var(--acc2);font-weight:700;margin-top:8px;display:block}
+.del{display:none;position:absolute;top:8px;right:8px;padding:2px 9px}
+.rv{opacity:0;transform:translateY(30px) scale(.97);transition:.6s}.rv.in{opacity:1;transform:none}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.ph{aspect-ratio:4/3;border-radius:14px;background:center/cover;display:grid;place-items:center;font-size:3rem;color:#fff;cursor:zoom-in;overflow:hidden;transition:transform .3s,filter .3s;position:relative}
+.ph:hover{transform:scale(1.05);filter:brightness(1.1)}.ph small{position:absolute;bottom:6px;left:10px;font-size:.75rem;background:#0008;padding:2px 8px;border-radius:99px}
+.lb{position:fixed;inset:0;background:#000d;display:none;place-items:center;z-index:50;animation:rise .25s}.lb.on{display:grid}.lb div{width:min(90vw,800px);aspect-ratio:4/3;border-radius:16px;background:center/cover;display:grid;place-items:center;font-size:7rem;color:#fff}
+body.edit .del{display:block}body.edit [data-e]{outline:1.5px dashed var(--acc2);outline-offset:2px;cursor:text}body.edit .ph{cursor:copy}
+.bar{display:none;position:fixed;bottom:calc(14px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);gap:8px;z-index:30;background:var(--card);border:1px solid var(--line);padding:8px;border-radius:999px;box-shadow:0 6px 24px #0004}body.edit .bar{display:flex}
+footer{text-align:center;padding:30px;color:var(--mut);border-top:1px solid var(--line)}
+</style></head><body>
+<nav><b data-e>⚓ Sailor Supply Co.</b><a href="#shop">Products</a><a href="#photos">Photos</a><a href="#contact">Contact</a><button id="ed" style="display:none">✏️ Edit</button></nav>
+
+<header class="hero">
+<h1 data-e>Everything a Sailor Needs</h1>
+<p data-e>Ropes, sails, life jackets, anchors, navigation gear and more – one store for every sailor.</p>
+<a href="#shop"><button class="alt">Shop now</button></a>
+<div class="boat">⛵</div>
+<svg class="wave w2" viewBox="0 0 1200 90" preserveAspectRatio="none"><path d="M0 40 Q150 0 300 40 T600 40 T900 40 T1200 40 V90 H0Z" fill="#fff" /></svg>
+<svg class="wave" viewBox="0 0 1200 90" preserveAspectRatio="none"><path d="M0 50 Q150 10 300 50 T600 50 T900 50 T1200 50 V90 H0Z" fill="var(--bg)"/></svg>
+</header>
+
+<section id="shop"><h2 data-e>Our Products</h2><p class="sub" data-e>Quality gear for every sailor, from deck to harbor.</p>
+<div class="grid" id="grid"></div><br><button id="add" class="alt" style="display:none">+ Add product</button></section>
+
+<section id="photos"><h2 data-e>Photo Gallery</h2><p class="sub" data-e>Life on the water, captured.</p><div class="gal" id="gal"></div></section>
+
+<section id="contact"><h2 data-e>Contact</h2><p data-e>📍 Harbor Road, Port City &nbsp; 📞 +000 000 0000 &nbsp; ✉️ hello@sailorsupply.com</p></section>
+<footer data-e>© Sailor Supply Co. – Fair winds!</footer>
+
+<div class="bar"><button id="save">💾 Save</button><button id="reset" class="alt">Reset</button></div>
+<div class="lb" id="lb"><div></div></div><input type="file" id="file" accept="image/*" hidden>
+
+<script>
+const P=[["⛵","Sails","Dacron racing & cruising sails","$320"],["🪢","Ropes","Braided marine rope, all sizes","$18"],["🦺","Life Jackets","Coast-guard rated comfort fit","$55"],["⚓","Anchors","Galvanised steel, all weights","$75"],["🧭","Navigation","Compass, GPS & charts","$140"],["🧥","Sailor Wear","Waterproof jackets & boots","$95"],["🔦","Safety Gear","Flares, lights, first-aid","$40"],["🛶","Boat Parts","Cleats, winches, fittings","$25"]];
+const G=[["⛵","Sunset Regatta","#ff8a5c,#6a3df0"],["🌊","Open Sea","#0a7ea4,#07304f"],["⚓","Harbor Morning","#3cc3ee,#0a4a73"],["🏝️","Island Anchorage","#2bb673,#0a7ea4"],["🌅","Golden Hour","#ffb347,#ff5e62"],["🧭","Navigation Desk","#4b6cb7,#182848"]];
+const $=s=>document.querySelector(s),grid=$("#grid"),gal=$("#gal");let imgs={};
+const card=p=>`<div class="card rv"><button class="del" onclick="this.parentNode.remove()">✕</button><span class="ic">${p[0]}</span><h3 data-e>${p[1]}</h3><p data-e>${p[2]}</p><span class="price" data-e>${p[3]}</span></div>`;
+grid.innerHTML=P.map(card).join("");
+function drawG(){gal.innerHTML=G.map((g,i)=>`<div class="ph rv" data-i="${i}" style="background-image:${imgs[i]?`url(${imgs[i]})`:`linear-gradient(135deg,${g[2]})`}">${imgs[i]?"":g[0]}<small>${g[1]}</small></div>`).join("");obs()}
+let io=new IntersectionObserver(es=>es.forEach((e,k)=>{if(e.isIntersecting){e.target.style.transitionDelay=(k%6)*80+"ms";e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.1});
+function obs(){document.querySelectorAll(".rv:not(.in)").forEach(e=>io.observe(e))}
+let cur=null;
+gal.onclick=e=>{const t=e.target.closest(".ph");if(!t)return;cur=t.dataset.i;
+ if(document.body.classList.contains("edit"))$("#file").click();
+ else{const l=$("#lb");l.firstElementChild.style.cssText=t.style.cssText;l.firstElementChild.textContent=imgs[cur]?"":G[cur][0];l.classList.add("on")}};
+$("#lb").onclick=()=>$("#lb").classList.remove("on");
+$("#file").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{imgs[cur]=r.result;drawG()};r.readAsDataURL(f);e.target.value=""};
+$("#ed").onclick=()=>{const on=document.body.classList.toggle("edit");$("#ed").textContent=on?"✅ Done":"✏️ Edit";$("#add").style.display=on?"inline-block":"none";
+ document.querySelectorAll("[data-e]").forEach(e=>e.contentEditable=on)};
+$("#add").onclick=()=>{grid.insertAdjacentHTML("beforeend",card(["🆕","New product","Description","$0"]));document.querySelectorAll("[data-e]").forEach(e=>e.contentEditable=true);obs()};
+$("#save").onclick=()=>{try{localStorage.setItem("sailor",JSON.stringify({g:grid.innerHTML.replace(/ in"/g,'"'),t:[...document.querySelectorAll("[data-e]:not(.card *)")].map(e=>e.innerHTML),i:imgs}));$("#save").textContent="Saved ✓"}catch(x){$("#save").textContent="Can't save"}setTimeout(()=>$("#save").textContent="💾 Save",1500)};
+$("#reset").onclick=()=>{try{localStorage.removeItem("sailor")}catch(x){}location.reload()};
+try{const s=JSON.parse(localStorage.getItem("sailor")||"null");if(s){grid.innerHTML=s.g;imgs=s.i||{};[...document.querySelectorAll("[data-e]:not(.card *)")].forEach((e,i)=>{if(s.t[i]!=null)e.innerHTML=s.t[i]})}}catch(x){}
+drawG();obs();
+/* Owner-only: open this page with #admin at the end of the link, then enter the passcode */
+function unlock(){if(location.hash==='#admin'){const c=prompt('Owner passcode:');if(c==='sailor123'){$('#ed').style.display='inline-block'}else if(c!==null){alert('Wrong passcode')}}}
+unlock();addEventListener('hashchange',unlock);
+</script></body></html>
